@@ -104,11 +104,11 @@ agent = QLearningAgentEpsScheduling(
 rewards = train("QLearningAgentEpsScheduling", agent, "./videos/q_learning_agent_eps_scheduling")
 assert np.mean(rewards[-100:]) > 0.0
 
-####################
+#################################################
 # 3. Play with SARSA
-####################
+#################################################
 
 agent = SarsaAgent(learning_rate=0.5, gamma=0.99, legal_actions=list(range(n_actions)))
 
-# rewards = train("SARSA", agent, "./videos/sarsa")
-# assert np.mean(rewards[-100:]) > 0.0
+rewards = train("SARSA", agent, "./videos/sarsa")
+assert np.mean(rewards[-100:]) > 0.0

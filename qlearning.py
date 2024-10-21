@@ -62,14 +62,14 @@ class QLearningAgent:
            Q_new(s, a) := Q_old(s, a) + learning_rate * TD_error(s', a)
         """
         # BEGIN SOLUTION
-        q_value = self.get_qvalue(state, action)
+        q_value_old = self.get_qvalue(state, action)
         max_next_q_value = self.get_value(next_state)
 
         td_target = reward + self.gamma * max_next_q_value
-        td_error = td_target - q_value
+        td_error = td_target - q_value_old
+        q_value_new = q_value_old + self.learning_rate * td_error
 
-        q_value = q_value + self.learning_rate * td_error
-        self.set_qvalue(state, action, q_value)
+        self.set_qvalue(state, action, q_value_new)
         # END SOLUTION
 
     def get_best_action(self, state: State) -> Action:
